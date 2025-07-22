@@ -8,6 +8,15 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Center only the input div */
+#inputDiv {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    margin: 20px 0;
+}
+
 #addTodoButton{
     background-color: #4CAF50;
     color: white;
