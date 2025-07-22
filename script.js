@@ -3,11 +3,11 @@ let ctr = 1;
 function updateTodo(index) {
     const el = document.querySelector(`#todo${index}`);
     const newValue = prompt("Update your todo:".trim()); // prompt to get the new value from the user
-    if (newValue !== null && newValue.trim() !== "") { 
-        el.innerHTML = `${index}. ${newValue} <div id="del_and_upt"><button id="updateButton" onclick="updateTodo(${index})">UPDATE</button> <button id="delButton" onclick="deleteTodo(${index})">DELETE</button></div>`; // updating the text of the div with the new value
-    }   else {
-        alert("Todo cannot be empty!"); // alert if the new value is empty
+    if (newValue == null && newValue.trim() == "") { 
+        alert("Todo cannot be empty!"); 
+        return;
     }
+    el.innerHTML = `${index}. ${newValue} <div id="del_and_upt"><button id="updateButton" onclick="updateTodo(${index})">UPDATE</button> <button id="delButton" onclick="deleteTodo(${index})">DELETE</button></div>`; // updating the text of the div with the new value
 }
 
 function deleteTodo(index) {
@@ -23,6 +23,13 @@ function addTodo(){
     const inputEl = document.querySelector('#todoInput');
     const val = inputEl.value.trim(); // trim function eliminates any spaces at the 
                                       // start or end of the string.
+    
+    // Check if the input is empty or null
+    if (val === null || val === "") {
+        alert("Todo cannot be empty!");
+        return; // Exit the function if input is invalid
+    }
+    
     const divEl = document.createElement('div');
     divEl.setAttribute('id', "todo" + ctr); // setting the id of the div to todo-1, todo-2, etc.
     divEl.innerHTML = `${ctr}. ${val} <div id="del_and_upt"><button id="updateButton" onclick="updateTodo(${ctr})">UPDATE</button> <button id="delButton" onclick="deleteTodo(${ctr})">DELETE</button></div>`; // setting the text of the div to the value of the input                                  
